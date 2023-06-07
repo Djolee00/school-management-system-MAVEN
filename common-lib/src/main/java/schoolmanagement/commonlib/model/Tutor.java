@@ -73,6 +73,7 @@ public class Tutor implements Serializable {
 	 * Sets the ID of the tutor.
 	 *
 	 * @param id The ID of the tutor.
+	 * @throws NullPointerException if the specified ID is null.
 	 */
 	public void setId(Long id) {
 		if (id == null) {
@@ -94,13 +95,16 @@ public class Tutor implements Serializable {
 	 * Sets the first name of the tutor.
 	 *
 	 * @param firstName The first name of the tutor.
+	 * @throws NullPointerException     if the specified first name is null.
+	 * @throws IllegalArgumentException if the specified first name has less than 3
+	 *                                  characters.
 	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null) {
 			throw new NullPointerException("First name cannot be null");
 		}
 		if (firstName.length() < 3) {
-			throw new IllegalArgumentException("First name cannot contain less then 3 char");
+			throw new IllegalArgumentException("First name must have at least 3 characters");
 		}
 		this.firstName = firstName;
 	}
@@ -118,13 +122,16 @@ public class Tutor implements Serializable {
 	 * Sets the last name of the tutor.
 	 *
 	 * @param lastName The last name of the tutor.
+	 * @throws NullPointerException     if the specified last name is null.
+	 * @throws IllegalArgumentException if the specified last name has less than 3
+	 *                                  characters.
 	 */
 	public void setLastName(String lastName) {
 		if (lastName == null) {
-			throw new NullPointerException("First name cannot be null");
+			throw new NullPointerException("Last name cannot be null");
 		}
 		if (lastName.length() < 3) {
-			throw new IllegalArgumentException("Lst name cannot contain less then 3 char");
+			throw new IllegalArgumentException("Last name must have at least 3 characters");
 		}
 		this.lastName = lastName;
 	}
@@ -143,7 +150,7 @@ public class Tutor implements Serializable {
 	 * Sets the list of languages the tutor specializes in.
 	 *
 	 * @param languages The list of languages the tutor specializes in.
-	 * @see Language
+	 * @throws NullPointerException if the specified list of languages is null.
 	 */
 	public void setLanguages(List<Language> languages) {
 		if (languages == null) {

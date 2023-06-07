@@ -62,6 +62,7 @@ public class User implements Serializable {
 	 * Sets the ID of the user.
 	 *
 	 * @param id The ID of the user.
+	 * @throws NullPointerException if the specified ID is null.
 	 */
 	public void setId(Long id) {
 		if (id == null) {
@@ -83,6 +84,8 @@ public class User implements Serializable {
 	 * Sets the username of the user.
 	 *
 	 * @param username The username of the user.
+	 * @throws NullPointerException     if the specified username is null.
+	 * @throws IllegalArgumentException if the specified username is blank.
 	 */
 	public void setUsername(String username) {
 		if (username == null) {
@@ -107,28 +110,26 @@ public class User implements Serializable {
 	 * Sets the password of the user.
 	 *
 	 * @param password The password of the user.
+	 * @throws NullPointerException     if the specified password is null.
+	 * @throws IllegalArgumentException if the specified password is blank.
 	 */
 	public void setPassword(String password) {
 		if (password == null) {
-            throw new NullPointerException("Password cannot be null");
-        }
-        if (password.isBlank()) {
-            throw new IllegalArgumentException("Password cannot be blank");
-        }
+			throw new NullPointerException("Password cannot be null");
+		}
+		if (password.isBlank()) {
+			throw new IllegalArgumentException("Password cannot be blank");
+		}
 		this.password = password;
 	}
 
 	/**
-     * Returns a string representation of the User object.
-     *
-     * @return A string representation of the User object.
-     */
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
+	 * Returns a string representation of the User object.
+	 *
+	 * @return A string representation of the User object.
+	 */
+	@Override
+	public String toString() {
+		return "User{" + "id=" + id + ", username='" + username + '\'' + ", password='" + password + '\'' + '}';
+	}
 }

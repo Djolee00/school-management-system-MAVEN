@@ -88,6 +88,8 @@ public class Student extends User implements Serializable {
 	 * Sets the first name of the student.
 	 *
 	 * @param firstName the first name of the student
+	 * @throws NullPointerException     if the specified first name is null
+	 * @throws IllegalArgumentException if the specified first name is blank
 	 */
 	public void setFirstName(String firstName) {
 		if (firstName == null) {
@@ -112,6 +114,8 @@ public class Student extends User implements Serializable {
 	 * Sets the last name of the student.
 	 *
 	 * @param lastName the last name of the student
+	 * @throws NullPointerException     if the specified last name is null
+	 * @throws IllegalArgumentException if the specified last name is blank
 	 */
 	public void setLastName(String lastName) {
 		if (lastName == null) {
@@ -136,6 +140,8 @@ public class Student extends User implements Serializable {
 	 * Sets the birthdate of the student.
 	 *
 	 * @param birthdate the birthdate of the student
+	 * @throws NullPointerException     if the specified birthdate is null
+	 * @throws IllegalArgumentException if the specified birthdate is in the future
 	 */
 	public void setBirthdate(LocalDate birthdate) {
 		if (birthdate == null) {
@@ -160,6 +166,7 @@ public class Student extends User implements Serializable {
 	 * Sets the creation date of the student.
 	 *
 	 * @param creationDate the creation date of the student
+	 * @throws NullPointerException if the specified creation date is null
 	 */
 	public void setCreationDate(LocalDate creationDate) {
 		if (creationDate == null) {
@@ -181,6 +188,7 @@ public class Student extends User implements Serializable {
 	 * Sets the list of course enrollments of the student.
 	 *
 	 * @param courseEnrollments the list of course enrollments of the student
+	 * @throws NullPointerException if the specified course enrollments list is null
 	 */
 	public void setCourseEnrollments(List<CourseEnrollment> courseEnrollments) {
 		if (courseEnrollments == null) {
@@ -202,6 +210,7 @@ public class Student extends User implements Serializable {
 	 * Sets the list of course groups the student is associated with.
 	 *
 	 * @param courseGroups the list of course groups the student is associated with
+	 * @throws NullPointerException if the specified course groups list is null
 	 */
 	public void setCourseGroups(List<CourseGroup> courseGroups) {
 		if (courseGroups == null) {
