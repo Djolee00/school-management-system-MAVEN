@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"schoolmanagement.commonlib.communication"},{"l":"schoolmanagement.commonlib.model"},{"l":"schoolmanagement.commonlib.model.enums"}];updateSearchResults();

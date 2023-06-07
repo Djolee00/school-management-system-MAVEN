@@ -1,0 +1,49 @@
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'1.7'
+-sourcepath
+'C:/PROGRAMIRANJE/3.FON Programiranje/Napredno programiranje/school-management-system/common-lib/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/PROGRAMIRANJE/3.FON Programiranje/Napredno programiranje/school-management-system/common-lib/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'common-lib 1.0.0 API'
+-linkoffline
+'https://docs.oracle.com/javase/7/docs/api' 'C:/PROGRAMIRANJE/3.FON Programiranje/Napredno programiranje/school-management-system/common-lib/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'common-lib 1.0.0 API'
+schoolmanagement.commonlib.communication
+schoolmanagement.commonlib.model
+schoolmanagement.commonlib.model.enums
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\src\main\java = 1686171971247
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\allclasses-index.html = 1686173356093
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\allpackages-index.html = 1686173356096
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\copy.svg = 1686173356134
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\element-list = 1686173355936
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\help-doc.html = 1686173356128
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\index-all.html = 1686173356122
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\index.html = 1686173356072
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\jquery-ui.overrides.css = 1686173356167
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\member-search-index.js = 1686173356100
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\module-search-index.js = 1686173356097
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\overview-summary.html = 1686173356124
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\overview-tree.html = 1686173356068
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\package-search-index.js = 1686173356098
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\script.js = 1686173356132
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\search.js = 1686173356136
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\serialized-form.html = 1686173355981
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\stylesheet.css = 1686173356131
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\tag-search-index.js = 1686173356102
+C:\PROGRAMIRANJE\3.FON Programiranje\Napredno programiranje\school-management-system\common-lib\target\site\apidocs\type-search-index.js = 1686173356099
