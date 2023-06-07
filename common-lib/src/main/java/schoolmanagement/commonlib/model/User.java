@@ -24,6 +24,9 @@ public class User implements Serializable {
 	}
 
 	public void setId(Long id) {
+		if (id == null) {
+			throw new NullPointerException("ID cannot be null");
+		}
 		this.id = id;
 	}
 
@@ -32,6 +35,12 @@ public class User implements Serializable {
 	}
 
 	public void setUsername(String username) {
+		if (username == null) {
+			throw new NullPointerException("Username cannot be null");
+		}
+		if (username.isBlank()) {
+			throw new IllegalArgumentException("Username cannot be blank");
+		}
 		this.username = username;
 	}
 
@@ -40,6 +49,12 @@ public class User implements Serializable {
 	}
 
 	public void setPassword(String password) {
+		if (password == null) {
+            throw new NullPointerException("Password cannot be null");
+        }
+        if (password.isBlank()) {
+            throw new IllegalArgumentException("Password cannot be blank");
+        }
 		this.password = password;
 	}
 

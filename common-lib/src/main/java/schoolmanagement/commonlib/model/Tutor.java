@@ -25,6 +25,9 @@ public class Tutor implements Serializable {
 	}
 
 	public void setId(Long id) {
+		if (id == null) {
+			throw new NullPointerException("ID cannot be null");
+		}
 		this.id = id;
 	}
 
@@ -33,6 +36,12 @@ public class Tutor implements Serializable {
 	}
 
 	public void setFirstName(String firstName) {
+		if (firstName == null) {
+			throw new NullPointerException("First name cannot be null");
+		}
+		if (firstName.length() < 3) {
+			throw new IllegalArgumentException("First name cannot contain less then 3 char");
+		}
 		this.firstName = firstName;
 	}
 
@@ -41,6 +50,12 @@ public class Tutor implements Serializable {
 	}
 
 	public void setLastName(String lastName) {
+		if (lastName == null) {
+			throw new NullPointerException("First name cannot be null");
+		}
+		if (lastName.length() < 3) {
+			throw new IllegalArgumentException("Lst name cannot contain less then 3 char");
+		}
 		this.lastName = lastName;
 	}
 
@@ -49,6 +64,9 @@ public class Tutor implements Serializable {
 	}
 
 	public void setLanguages(List<Language> languages) {
+		if (languages == null) {
+			throw new NullPointerException("Languages list cannot be null");
+		}
 		this.languages = languages;
 	}
 
