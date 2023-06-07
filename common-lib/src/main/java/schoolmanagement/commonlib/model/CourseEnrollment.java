@@ -1,56 +1,45 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package schoolmanagement.commonlib.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-/**
- *
- * @author ivano
- */
-public class CourseEnrollment implements Serializable{
-    
-    private Student student;
-    private Course course;
-    private LocalDate enrollmentDate;
+public class CourseEnrollment implements Serializable {
 
-    public CourseEnrollment(Student student, Course course, LocalDate enrollmentDate) {
-        this.student = student;
-        this.course = course;
-        this.enrollmentDate = enrollmentDate;
-    }
+	private Student student;
+	private Course course;
+	private LocalDate enrollmentDate;
 
-    public CourseEnrollment() {
-    }
-    
-    
+	public CourseEnrollment(Student student, Course course, LocalDate enrollmentDate) {
+		this.student = student;
+		this.course = course;
+		this.enrollmentDate = enrollmentDate;
+	}
 
-    public Student getStudent() {
-        return student;
-    }
+	public CourseEnrollment() {
+	}
 
-    public void setStudent(Student student) {
-        this.student = student;
-    }
+	public Student getStudent() {
+		return student;
+	}
 
-    public Course getCourse() {
-        return course;
-    }
+	public void setStudent(Student student) {
+		this.student = student;
+	}
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+	public Course getCourse() {
+		return course;
+	}
 
-    public LocalDate getEnrollmentDate() {
-        return enrollmentDate;
-    }
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
-    public void setEnrollmentDate(LocalDate enrollmentDate) {
-        this.enrollmentDate = enrollmentDate;
-    }
-    
-    
+	public LocalDate getEnrollmentDate() {
+		return enrollmentDate;
+	}
+
+	public void setEnrollmentDate(LocalDate enrollmentDate) {
+		this.enrollmentDate = enrollmentDate;
+	}
+
 }

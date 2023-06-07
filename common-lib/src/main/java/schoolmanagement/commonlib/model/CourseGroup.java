@@ -1,92 +1,80 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package schoolmanagement.commonlib.model;
 
 import java.io.Serializable;
 import java.util.List;
 
-/**
- *
- * @author ivano
- */
-public class CourseGroup implements Serializable{
-    
-    private Long id;
-    private Course course;
-    private String name;
-    private Integer numOfStudents;
-    private List<Tutor> tutors;
-    private List<Student> students;
+public class CourseGroup implements Serializable {
 
-    public CourseGroup(Course course, String name, Integer numOfStudents, List<Tutor> tutors, List<Student> students) {
-        this.course = course;
-        this.name = name;
-        this.numOfStudents = numOfStudents;
-        this.tutors = tutors;
-        this.students = students;
-    }
+	private Long id;
+	private Course course;
+	private String name;
+	private Integer numOfStudents;
+	private List<Tutor> tutors;
+	private List<Student> students;
 
-    public CourseGroup() {
-    }
-    
-    
+	public CourseGroup(Course course, String name, Integer numOfStudents, List<Tutor> tutors, List<Student> students) {
+		this.course = course;
+		this.name = name;
+		this.numOfStudents = numOfStudents;
+		this.tutors = tutors;
+		this.students = students;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public CourseGroup() {
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public Course getCourse() {
-        return course;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setCourse(Course course) {
-        this.course = course;
-    }
+	public Course getCourse() {
+		return course;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setCourse(Course course) {
+		this.course = course;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Integer getNumOfStudents() {
-        return numOfStudents;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setNumOfStudents(Integer numOfStudents) {
-        this.numOfStudents = numOfStudents;
-    }
+	public Integer getNumOfStudents() {
+		return numOfStudents;
+	}
 
-    public List<Tutor> getTutors() {
-        return tutors;
-    }
+	public void setNumOfStudents(Integer numOfStudents) {
+		this.numOfStudents = numOfStudents;
+	}
 
-    public void setTutors(List<Tutor> tutors) {
-        this.tutors = tutors;
-    }
+	public List<Tutor> getTutors() {
+		return tutors;
+	}
 
-    public List<Student> getStudents() {
-        return students;
-    }
+	public void setTutors(List<Tutor> tutors) {
+		this.tutors = tutors;
+	}
 
-    public void setStudents(List<Student> students) {
-        this.students = students;
-    }
+	public List<Student> getStudents() {
+		return students;
+	}
 
-    @Override
-    public String toString() {
-        return "CourseGroup{" + "id=" + id + ", course=" + course + ", name=" + name + ", numOfStudents=" + numOfStudents + '}';
-    }
-    
-    
-    
-    
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	@Override
+	public String toString() {
+		return "CourseGroup{" + "id=" + id + ", course=" + course + ", name=" + name + ", numOfStudents="
+				+ numOfStudents + '}';
+	}
+
 }
