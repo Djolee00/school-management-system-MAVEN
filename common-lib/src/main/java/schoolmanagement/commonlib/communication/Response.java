@@ -1,47 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package schoolmanagement.commonlib.communication;
 
 import java.io.Serializable;
 
-/**
- *
- * @author ivano
- */
-public class Response implements Serializable{
-    
-    private Object object;
-    private ResponseType responseType;
+public class Response implements Serializable {
 
-    public Response(Object object, ResponseType responseType) {
-        this.object = object;
-        this.responseType = responseType;
-    }
+	private Object object;
+	private ResponseType responseType;
 
-    public Response() {
-    }
+	public Response(Object object, ResponseType responseType) {
+		this.object = object;
+		this.responseType = responseType;
+	}
 
-    public Object getObject() {
-        return object;
-    }
+	public Response() {
+	}
 
-    public void setObject(Object object) {
-        this.object = object;
-    }
+	public Object getObject() {
+		return object;
+	}
 
-    public ResponseType getResponseType() {
-        return responseType;
-    }
+	public void setObject(Object object) {
+		this.object = object;
+	}
 
-    public void setResponseType(ResponseType responseType) {
-        this.responseType = responseType;
-    }
+	public ResponseType getResponseType() {
+		return responseType;
+	}
 
-    @Override
-    public String toString() {
-        return "Response{" + "object=" + object + ", responseType=" + responseType + '}';
-    }
-    
+	public void setResponseType(ResponseType responseType) {
+		this.responseType = responseType;
+	}
+
+	@Override
+	public String toString() {
+		return "Response{" + "object=" + object + ", responseType=" + responseType + '}';
+	}
+
 }
