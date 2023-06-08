@@ -6,9 +6,8 @@
 		<groupId>rs.schoolmanagement</groupId>
 		<version>1.0.0</version>
 	</parent>
-	
-  <groupId>schoolmanagement.commonlib</groupId>
-  <artifactId>common-lib</artifactId>
+
+	<artifactId>common-lib</artifactId>
 
 	<name>common-lib</name>
 	<!-- FIXME change it to the project's website -->
