@@ -139,6 +139,7 @@ public class MainForm extends javax.swing.JFrame {
 			btnStartServer.setEnabled(false);
 			jMenuConfiguation.setEnabled(false);
 		} catch (IOException ex) {
+			System.out.println(ex);
 			JOptionPane.showMessageDialog(this, "Error starting server. Please try again!", "Erorr",
 					JOptionPane.ERROR_MESSAGE);
 			this.dispose();
