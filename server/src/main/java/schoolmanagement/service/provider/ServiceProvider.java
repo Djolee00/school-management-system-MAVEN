@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package schoolmanagement.service.provider;
 
 import java.util.HashMap;
@@ -25,65 +21,63 @@ import schoolmanagement.service.impl.LanguageServiceImpl;
 import schoolmanagement.service.impl.StudentServiceImpl;
 import schoolmanagement.service.impl.UserServiceImpl;
 
-/**
- *
- * @author ivano
- */
-// Thread Safe Singleton Pattern
 public class ServiceProvider {
 
-    private final Map<Class, Object> manager;
+	@SuppressWarnings("rawtypes")
+	private final Map<Class, Object> manager;
 
-    // volatile keyword here makes sure that
-    // the changes made in one thread are 
-    // immediately reflect in other thread
-    private static volatile ServiceProvider serviceProvider;
+	// volatile keyword here makes sure that
+	// the changes made in one thread are
+	// immediately reflect in other thread
+	private static volatile ServiceProvider serviceProvider;
 
-    private ServiceProvider() {
+	private ServiceProvider() {
 
-        this.manager = new HashMap<>();
+		this.manager = new HashMap<>();
 
-        registerDaos();
-        registerServices();
-    }
+		registerDaos();
+		registerServices();
+	}
 
-    // optimized thread safe singleton creation
-    public static ServiceProvider getInstance() {
-        ServiceProvider result = serviceProvider; // to reduce access of volatile field, performance boost
-        if (result == null) {
-            synchronized (ServiceProvider.class) {
-                result = serviceProvider;
-                if (result == null) {
-                    result = serviceProvider = new ServiceProvider();
-                }
-            }
-        }
-        return result;
-    }
+	// optimized thread safe singleton creation
+	public static ServiceProvider getInstance() {
+		ServiceProvider result = serviceProvider; // to reduce access of volatile field, performance boost
+		if (result == null) {
+			synchronized (ServiceProvider.class) {
+				result = serviceProvider;
+				if (result == null) {
+					result = serviceProvider = new ServiceProvider();
+				}
+			}
+		}
+		return result;
+	}
 
-    public Object getRequiredService(Class interfaceClass) {
+	public Object getRequiredService(@SuppressWarnings("rawtypes") Class interfaceClass) {
 
-        if (manager.containsKey(interfaceClass)) {
-            return manager.get(interfaceClass);
-        } else {
-            return null;
-        }
-    }
+		if (manager.containsKey(interfaceClass)) {
+			return manager.get(interfaceClass);
+		} else {
+			return null;
+		}
+	}
 
-    private void registerDaos() {
-        manager.put(StudentDao.class, new StudentDaoImpl());
-        manager.put(UserDao.class, new UserDaoImpl());
-        manager.put(AdminDao.class, new AdminDaoImpl());
-        manager.put(CourseDao.class, new CourseDaoImpl());
-        manager.put(LanguageDao.class, new LanguageDaoImpl());
+	private void registerDaos() {
+		manager.put(StudentDao.class, new StudentDaoImpl());
+		manager.put(UserDao.class, new UserDaoImpl());
+		manager.put(AdminDao.class, new AdminDaoImpl());
+		manager.put(CourseDao.class, new CourseDaoImpl());
+		manager.put(LanguageDao.class, new LanguageDaoImpl());
 
-    }
+	}
 
-    private void registerServices() {
-        manager.put(StudentService.class, new StudentServiceImpl((UserDao) manager.get(UserDao.class), (StudentDao) manager.get(StudentDao.class)));
-        manager.put(UserService.class, new UserServiceImpl((UserDao) manager.get(UserDao.class), (StudentDao) manager.get(StudentDao.class), (AdminDao) manager.get(AdminDao.class)));
-        manager.put(CourseService.class, new CourseServiceImpl((CourseDao) manager.get(CourseDao.class)));
-        manager.put(LanguageService.class, new LanguageServiceImpl((LanguageDao) manager.get(LanguageDao.class)));
-    }
+	private void registerServices() {
+		manager.put(StudentService.class, new StudentServiceImpl((UserDao) manager.get(UserDao.class),
+				(StudentDao) manager.get(StudentDao.class)));
+		manager.put(UserService.class, new UserServiceImpl((UserDao) manager.get(UserDao.class),
+				(StudentDao) manager.get(StudentDao.class), (AdminDao) manager.get(AdminDao.class)));
+		manager.put(CourseService.class, new CourseServiceImpl((CourseDao) manager.get(CourseDao.class)));
+		manager.put(LanguageService.class, new LanguageServiceImpl((LanguageDao) manager.get(LanguageDao.class)));
+	}
 
 }
