@@ -8,5 +8,6 @@
   <name>SchoolManagementSystem</name>
   <modules>
     <module>common-lib</module>
+    <module>validation-library</module>
   </modules>
 </project>

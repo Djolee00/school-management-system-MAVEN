@@ -7,10 +7,9 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<groupId>rs.schoolmanagement.common.lib</groupId>
-	<artifactId>common-lib</artifactId>
+	<artifactId>validation-library</artifactId>
 
-	<name>common-lib</name>
+	<name>validation-library</name>
 	<!-- FIXME change it to the project's website -->
 	<url>http://www.example.com</url>
 
@@ -19,6 +18,15 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<pluginManagement>
