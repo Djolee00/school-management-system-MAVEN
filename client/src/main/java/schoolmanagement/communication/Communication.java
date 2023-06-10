@@ -15,7 +15,7 @@ public class Communication {
 	private static Communication instance;
 
 	private Communication() throws IOException {
-		Socket socket = new Socket("localhost", 9000);
+		Socket socket = new Socket("localhost", 9001);
 		sender = new Sender(socket);
 		receiver = new Receiver(socket);
 	}

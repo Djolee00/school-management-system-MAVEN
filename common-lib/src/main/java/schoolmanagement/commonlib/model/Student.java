@@ -188,12 +188,8 @@ public class Student extends User implements Serializable {
 	 * Sets the list of course enrollments of the student.
 	 *
 	 * @param courseEnrollments the list of course enrollments of the student
-	 * @throws NullPointerException if the specified course enrollments list is null
 	 */
 	public void setCourseEnrollments(List<CourseEnrollment> courseEnrollments) {
-		if (courseEnrollments == null) {
-			throw new NullPointerException("Course enrollments list cannot be null");
-		}
 		this.courseEnrollments = courseEnrollments;
 	}
 
@@ -210,12 +206,8 @@ public class Student extends User implements Serializable {
 	 * Sets the list of course groups the student is associated with.
 	 *
 	 * @param courseGroups the list of course groups the student is associated with
-	 * @throws NullPointerException if the specified course groups list is null
 	 */
 	public void setCourseGroups(List<CourseGroup> courseGroups) {
-		if (courseGroups == null) {
-			throw new NullPointerException("Course groups list cannot be null");
-		}
 		this.courseGroups = courseGroups;
 	}
 
