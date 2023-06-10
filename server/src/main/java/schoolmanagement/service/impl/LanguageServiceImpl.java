@@ -17,7 +17,10 @@ import schoolmanagement.service.LanguageService;
  * @author Djordje Ivanovic
  */
 public class LanguageServiceImpl implements LanguageService {
-
+	
+	/**
+	 * Object for language-related data access operations
+	 */
 	private final LanguageDao languageDao;
 
 	/**
