@@ -2,6 +2,7 @@ package schoolmanagement.commonlib.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -78,13 +79,13 @@ class UserTest {
 	public void testSetPasswordWithBlankPassword() {
 		assertThrows(IllegalArgumentException.class, () -> user.setPassword(""));
 	}
-	
+
 	@Test
 	public void testToString() {
 		String s = user.toString();
-		s.contains("john");
-		s.contains("1");
-		s.contains("password123");
+		assertTrue(s.contains("john"));
+		assertTrue(s.contains("1"));
+		assertTrue(s.contains("password123"));
 	}
 
 }
