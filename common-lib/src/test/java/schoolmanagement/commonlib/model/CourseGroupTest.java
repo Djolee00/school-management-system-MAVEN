@@ -21,7 +21,7 @@ class CourseGroupTest {
 
 	@BeforeEach
 	public void setUp() throws Exception {
-		course = new Course("Math", LocalDate.now(), LocalDate.now().plusMonths(3), 30,
+		course = new Course("English", LocalDate.now(), LocalDate.now().plusMonths(3), 30,
 				new Language("English", Level.A1));
 
 		tutors = new ArrayList<>();
@@ -48,7 +48,8 @@ class CourseGroupTest {
 
 	@Test
 	public void testSetCourse() {
-		Course newCourse = new Course("Physics", LocalDate.now(), LocalDate.now().plusMonths(4), 25,
+		Course newCourse = new Course(
+				"English", LocalDate.now(), LocalDate.now().plusMonths(4), 25,
 				new Language("English", Level.A2));
 		courseGroup.setCourse(newCourse);
 		assertEquals(newCourse, courseGroup.getCourse());
@@ -106,7 +107,7 @@ class CourseGroupTest {
 	public void testToString() {
 		String s = courseGroup.toString();
 		assertTrue(s.contains("null"));
-		assertTrue(s.contains("Math"));
+		assertTrue(s.contains("English"));
 		assertTrue(s.contains("Group A"));
 		assertTrue(s.contains("20"));
 	}

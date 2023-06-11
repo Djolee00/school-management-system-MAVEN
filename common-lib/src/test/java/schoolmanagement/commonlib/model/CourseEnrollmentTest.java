@@ -20,7 +20,7 @@ class CourseEnrollmentTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		student = new Student("Alice", "Smith");
-		course = new Course("Math", LocalDate.now(), LocalDate.now().plusMonths(3), 30,
+		course = new Course("English", LocalDate.now(), LocalDate.now().plusMonths(3), 30,
 				new Language("English", Level.A1));
 		enrollmentDate = LocalDate.now();
 
