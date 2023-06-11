@@ -20,7 +20,7 @@ class CourseGroupTest {
 	private List<Student> students;
 
 	@BeforeEach
-	public void setUp() {
+	public void setUp() throws Exception {
 		course = new Course("Math", LocalDate.now(), LocalDate.now().plusMonths(3), 30,
 				new Language("English", Level.A1));
 

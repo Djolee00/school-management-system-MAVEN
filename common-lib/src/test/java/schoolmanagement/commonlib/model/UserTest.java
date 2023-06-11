@@ -13,7 +13,7 @@ class UserTest {
 	private User user;
 
 	@BeforeEach
-	public void setUp() {
+	public void setUp() throws Exception {
 		user = new User(1L, "john", "password123");
 	}
 

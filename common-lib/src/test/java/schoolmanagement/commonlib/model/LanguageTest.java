@@ -20,7 +20,7 @@ class LanguageTest {
 	private List<Course> courses;
 
 	@BeforeEach
-	public void setup() {
+	public void setup() throws Exception {
 		language = new Language("English", Level.A1);
 		tutors = new ArrayList<>();
 		courses = new ArrayList<>();

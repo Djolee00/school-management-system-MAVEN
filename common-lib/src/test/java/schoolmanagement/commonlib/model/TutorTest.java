@@ -18,7 +18,7 @@ class TutorTest {
 	private Tutor tutor;
 
 	@BeforeEach
-	public void setUp() {
+	public void setUp() throws Exception {
 		tutor = new Tutor("John", "Doe", new ArrayList<>());
 	}
 

@@ -16,7 +16,7 @@ class StudentTest {
 	private Student student;
 
 	@BeforeEach
-	public void setUp() {
+	public void setUp() throws Exception {
 		student = new Student(1L, "username", "password", "John", "Doe", LocalDate.of(2000, 1, 1), LocalDate.now());
 	}
 
