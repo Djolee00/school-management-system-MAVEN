@@ -28,8 +28,7 @@ public class MockStudentDao implements StudentDao {
 
 	@Override
 	public Student saveStudent(Student student) throws SQLException, IOException {
-		// TODO Auto-generated method stub
-		return null;
+		return student;
 	}
 
 	@Override

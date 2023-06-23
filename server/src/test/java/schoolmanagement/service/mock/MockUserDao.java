@@ -21,7 +21,7 @@ public class MockUserDao implements UserDao {
 	}
 
 	public long saveUser(User user) throws SQLException, IOException {
-		return 0;
+		return 1;
 	}
 
 	public boolean isUsernameUnique(String username) {
