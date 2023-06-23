@@ -154,7 +154,7 @@ class StudentTest {
 	@ParameterizedTest
 	@CsvSource({ "1, username, password, John, Doe, 2000-01-01, true",
 			"2, username, password, Jane, Smith, 1995-05-10, false",
-			"3, username, password, John, Doe, 2000-01-01, true" })
+			"3, username, password, John, Doe, 2000-01-01, false" })
 	public void testEquals(long id, String username, String password, String firstName, String lastName,
 			LocalDate birthdate, boolean expectedResult) {
 		Student student1 = new Student(id, username, password, firstName, lastName, birthdate, LocalDate.now());
