@@ -16,6 +16,7 @@ public class MockStudentDao implements StudentDao {
 
 	List<CourseEnrollment> courseEnrollments;
 	List<Course> courses;
+	List<Student> students;
 	
 	public MockStudentDao() {
 		Student s1 = new Student(1l, "john", "password", "john", "bryant", null, null);
@@ -34,12 +35,19 @@ public class MockStudentDao implements StudentDao {
 		courses.add(c2);
 		courses.add(c3);
 
+		students = new ArrayList<>();
+		students.add(s1);
+		students.add(s2);
+		students.add(s3);
+		
 		courseEnrollments = new ArrayList<>();
 		courseEnrollments.add(new CourseEnrollment(s1,c1,null));
 		courseEnrollments.add(new CourseEnrollment(s1,c2,null));
 		courseEnrollments.add(new CourseEnrollment(s2,c1,null));
 		courseEnrollments.add(new CourseEnrollment(s3,c3,null));
 		courseEnrollments.add(new CourseEnrollment(s3,c1,null));
+		
+		
 	}
 	
 	@Override
@@ -81,20 +89,27 @@ public class MockStudentDao implements StudentDao {
 
 	@Override
 	public boolean saveStudentSelectedCourses(List<CourseEnrollment> selectedCourses) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		if(selectedCourses != null) {
+			for (CourseEnrollment courseEnrollment : selectedCourses) {
+				if(courseEnrollment == null)
+					return false;
+			}
+			return true;
+		}else {
+			throw new SQLException();
+		}
 	}
 
 	@Override
 	public List<Student> getAllStudents() throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return students;
 	}
 
 	@Override
 	public boolean updateStudent(Student student) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		if(student.getFirstName().equals("user"))
+			return false;
+		return true;
 	}
 
 }

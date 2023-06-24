@@ -29,6 +29,8 @@ public class MockUserDao implements UserDao {
 	}
 
 	public boolean updateUser(User user) throws SQLException {
+		if(user.getUsername().equals("user"))
+			return false;
 		return true;
 	}
 
