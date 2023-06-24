@@ -5,11 +5,15 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import schoolmanagement.commonlib.model.Course;
+import schoolmanagement.commonlib.model.CourseEnrollment;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.service.mock.MockStudentValidator;
 import schoolmanagement.validator.student.SaveStudentValidator;
@@ -49,5 +53,38 @@ abstract class StudentServiceTest {
 		s.setId(1l);
 		
 		assertEquals(s, saved);
+	}
+	
+	@SuppressWarnings("serial")
+	@Test
+	void getStudentCoursesSuccessfull() throws IOException, SQLException {
+		Student s1 = new Student(1l, "john", "password", "john", "bryant", null, null);
+		Course c1 = new Course("English",null,null,2,null);
+		c1.setId(1l);
+		Course c2 = new Course("France",null,null,2,null);
+		c2.setId(2l);
+
+		
+		List<CourseEnrollment> courseEnrollments = new ArrayList<>() {{
+			add(new CourseEnrollment(s1, c1, null));
+			add(new CourseEnrollment(s1,c2,null));
+		}};
+		
+		List<CourseEnrollment> actual = studentService.getStudentCourses(1l);
+		assertTrue(actual.size() == 2);
+		for (int i = 0; i < actual.size(); i++) {
+			assertEquals(courseEnrollments.get(i).getCourse(),actual.get(i).getCourse());
+			assertEquals(courseEnrollments.get(i).getStudent(),actual.get(i).getStudent());
+		}
+	}
+	
+	@Test
+	void getStudentUnselectedCoursesSuccessfull() throws IOException, SQLException {
+		Course c3 = new Course("German",null,null,2,null);
+		c3.setId(3l);
+
+		List<Course> actual = studentService.getStudentUnselectedCourses(1l);
+		assertTrue(actual.size() == 1);
+		assertEquals(c3,actual.get(0));
 	}
 }
