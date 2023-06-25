@@ -3,6 +3,9 @@ package schoolmanagement.commonlib.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * The {@code Administrator} class represents an administrator user, extending
  * the {@link User} class and implementing the {@link Serializable} interface.
@@ -31,6 +34,13 @@ public class Administrator extends User implements Serializable {
 		super(id, username, password);
 		this.employmentDate = employmentDate;
 	}
+	
+	/**
+	 * Default constructor
+	 */
+	public Administrator() {
+		super();
+	}	
 
 	/**
 	 * Retrieves the employment date of the administrator.
@@ -40,6 +50,7 @@ public class Administrator extends User implements Serializable {
 	public LocalDate getEmploymentDate() {
 		return employmentDate;
 	}
+
 
 	/**
 	 * Sets the employment date of the administrator.

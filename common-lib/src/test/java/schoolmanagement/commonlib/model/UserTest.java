@@ -34,11 +34,6 @@ class UserTest {
 	}
 
 	@Test
-	public void testSetIdWithNullId() {
-		assertThrows(NullPointerException.class, () -> user.setId(null));
-	}
-
-	@Test
 	public void testGetUsername() {
 		assertEquals("john", user.getUsername());
 	}

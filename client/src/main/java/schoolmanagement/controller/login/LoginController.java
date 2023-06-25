@@ -8,6 +8,7 @@ import schoolmanagement.commonlib.communication.Response;
 import schoolmanagement.commonlib.communication.ResponseType;
 import schoolmanagement.commonlib.model.Administrator;
 import schoolmanagement.commonlib.model.User;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.controller.admin.AdminHomeController;
 import schoolmanagement.controller.student.StudentHomeController;
@@ -51,7 +52,7 @@ public class LoginController {
 			Response response = (Response) Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				User loggedUser = (User) response.getObject();
+				User loggedUser = JsonSerializationUtils.convertValue(response.getObject(), Administrator.class);
 				Session.getInstance().add("user", loggedUser);
 
 				if (loggedUser instanceof Administrator) {

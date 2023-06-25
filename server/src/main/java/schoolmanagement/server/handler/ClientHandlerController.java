@@ -13,6 +13,7 @@ import schoolmanagement.commonlib.model.Language;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.commonlib.model.Tutor;
 import schoolmanagement.commonlib.model.User;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.service.CourseService;
 import schoolmanagement.service.LanguageService;
 import schoolmanagement.service.StudentService;
@@ -26,7 +27,8 @@ public class ClientHandlerController {
 
 	public Response loginUser(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		User temp = (User) request.getObject();
+		Object object = request.getObject();
+		User temp = JsonSerializationUtils.convertValue(object, User.class);
 		User user = ((UserService) ServiceProvider.getInstance().getRequiredService(UserService.class))
 				.login(temp.getUsername(), temp.getPassword());
 		if (user == null) {

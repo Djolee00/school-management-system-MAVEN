@@ -1,5 +1,7 @@
 package schoolmanagement.commonlib.utils;
 
+import java.io.IOException;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -29,7 +31,7 @@ public class JsonSerializationUtils {
 	 * @return The JSON representation of the source object as a string.
 	 * @throws JsonProcessingException
 	 */
-	public static <T> String serializeToJson(T source, TypeReference<T> targetType) throws JsonProcessingException {
+	public static <T> String serializeToJson(T source,Class<T> targetType) throws JsonProcessingException {
 		return objectMapper.writerFor(targetType).writeValueAsString(source);
 	}
 
@@ -40,11 +42,24 @@ public class JsonSerializationUtils {
 	 * @param target The type reference representing the target type.
 	 * @param <T>    The type of the target object.
 	 * @return The deserialized object of the specified target type.
-	 * @throws JsonProcessingException If an error occurs during deserialization
-	 * @throws JsonMappingException
+	 * @throws IOException 
 	 */
-	public static <T> T deserializeFromJson(String source, TypeReference<T> target)
-			throws JsonMappingException, JsonProcessingException {
-		return objectMapper.readValue(source, target);
+	public static <T> T deserializeFromJson(String source, Class<T> targetType)
+			throws IOException {
+		return objectMapper.readValue(source, targetType);
+	}
+	
+	/**
+	 * Converts the given object to an concrete object of model.
+	 *
+	 * @param source The object to convert.
+	 * @param target The class which is target.
+	 * @param <T>    The type of the target object.
+	 * @return The converted object of the specified target type.
+	 * @throws IOException 
+	 */
+	public static <T> T convertValue(Object source, Class<T> targetType)
+			throws IOException {
+		return objectMapper.convertValue(source, targetType);
 	}
 }

@@ -48,6 +48,14 @@ public class User implements Serializable {
 		this.username = username;
 		this.password = password;
 	}
+	
+	
+	/**
+	 * Default constructor
+	 */
+	public User() {
+		super();
+	}
 
 	/**
 	 * Returns the ID of the user.
@@ -65,9 +73,6 @@ public class User implements Serializable {
 	 * @throws NullPointerException if the specified ID is null.
 	 */
 	public void setId(Long id) {
-		if (id == null) {
-			throw new NullPointerException("ID cannot be null");
-		}
 		this.id = id;
 	}
 
