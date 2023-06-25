@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.Date;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Sender;
 import schoolmanagement.commonlib.communication.Receiver;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
 import schoolmanagement.commonlib.communication.ResponseType;
 import schoolmanagement.commonlib.model.User;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.server.Server;
 import validation.exception.ValidationException;
 
@@ -32,7 +36,9 @@ public class ClientHandler extends Thread {
 		try {
 			while (true) {
 
-				Request request = (Request) receiver.receive();
+				String jsonRequest = (String) receiver.receive();
+				Request request = JsonSerializationUtils.deserializeFromJson(jsonRequest, new TypeReference<Request>() {
+				});
 				handleRequest(request);
 
 			}
@@ -103,9 +109,13 @@ public class ClientHandler extends Thread {
 				Server.loggedClients.remove(this);
 			}
 			}
-			sender.send(response);
+			String jsonResponse = JsonSerializationUtils.serializeToJson(response, new TypeReference<Response>() {
+			});
+			sender.send(jsonResponse);
 		} catch (SQLException | ValidationException ex) {
-			sender.send(new Response(ex.getMessage(), ResponseType.FAILURE));
+			String jsonResponse = JsonSerializationUtils.serializeToJson(new Response(ex.getMessage(), ResponseType.FAILURE), new TypeReference<Response>() {
+			});
+			sender.send(jsonResponse);
 		}
 	}
 
