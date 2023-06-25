@@ -3,6 +3,9 @@ package schoolmanagement.server.handler;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
 import schoolmanagement.commonlib.communication.ResponseType;
@@ -28,7 +31,8 @@ public class ClientHandlerController {
 	public Response loginUser(Request request) throws IOException, SQLException {
 		Response response = new Response();
 		Object object = request.getObject();
-		User temp = JsonSerializationUtils.convertValue(object, User.class);
+		User temp = JsonSerializationUtils.convertValue(object, new TypeReference<User>() {
+		});
 		User user = ((UserService) ServiceProvider.getInstance().getRequiredService(UserService.class))
 				.login(temp.getUsername(), temp.getPassword());
 		if (user == null) {
@@ -43,7 +47,8 @@ public class ClientHandlerController {
 
 	public Response getStudentCourses(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Student student = (Student) request.getObject();
+		Student student = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Student>() {
+		});
 
 		List<CourseEnrollment> courses = ((StudentService) ServiceProvider.getInstance()
 				.getRequiredService(StudentService.class)).getStudentCourses(student.getId());
@@ -59,7 +64,8 @@ public class ClientHandlerController {
 
 	public Response getStudentUnselectedCourses(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Student student = (Student) request.getObject();
+		Student student = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Student>() {
+		});
 
 		List<Course> courses = ((StudentService) ServiceProvider.getInstance().getRequiredService(StudentService.class))
 				.getStudentUnselectedCourses(student.getId());
@@ -76,7 +82,8 @@ public class ClientHandlerController {
 	public Response enrollStudentInCourses(Request request) throws IOException, SQLException {
 		Response response = new Response();
 		@SuppressWarnings("unchecked")
-		List<CourseEnrollment> selectedCourses = (List<CourseEnrollment>) request.getObject();
+		List<CourseEnrollment> selectedCourses = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<List<CourseEnrollment>>() {
+		});
 
 		boolean status = ((StudentService) ServiceProvider.getInstance().getRequiredService(StudentService.class))
 				.enrollCourses(selectedCourses);

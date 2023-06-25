@@ -2,6 +2,9 @@ package schoolmanagement.controller.login;
 
 import java.io.IOException;
 import javax.swing.JOptionPane;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -52,7 +55,8 @@ public class LoginController {
 			Response response = (Response) Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				User loggedUser = JsonSerializationUtils.convertValue(response.getObject(), Administrator.class);
+				User loggedUser = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<Administrator>() {
+				});
 				Session.getInstance().add("user", loggedUser);
 
 				if (loggedUser instanceof Administrator) {

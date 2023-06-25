@@ -32,12 +32,14 @@ public class Communication {
 	}
 
 	public void send(Request request) throws IOException {
-		String jsonRequest = JsonSerializationUtils.serializeToJson(request,Request.class);
+		String jsonRequest = JsonSerializationUtils.serializeToJson(request,new TypeReference<Request>() {
+		});
 		sender.send(jsonRequest);
 	}
 
 	public Response receive() throws IOException, ClassNotFoundException {
 		String jsonResponse = (String) receiver.receive();
-		return JsonSerializationUtils.deserializeFromJson(jsonResponse, Response.class);
+		return JsonSerializationUtils.deserializeFromJson(jsonResponse, new TypeReference<Response>() {
+		});
 	}
 }

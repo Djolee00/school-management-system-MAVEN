@@ -31,7 +31,7 @@ public class JsonSerializationUtils {
 	 * @return The JSON representation of the source object as a string.
 	 * @throws JsonProcessingException
 	 */
-	public static <T> String serializeToJson(T source,Class<T> targetType) throws JsonProcessingException {
+	public static <T> String serializeToJson(T source, TypeReference<T> targetType) throws JsonProcessingException {
 		return objectMapper.writerFor(targetType).writeValueAsString(source);
 	}
 
@@ -44,7 +44,7 @@ public class JsonSerializationUtils {
 	 * @return The deserialized object of the specified target type.
 	 * @throws IOException 
 	 */
-	public static <T> T deserializeFromJson(String source, Class<T> targetType)
+	public static <T> T deserializeFromJson(String source, TypeReference<T> targetType)
 			throws IOException {
 		return objectMapper.readValue(source, targetType);
 	}
@@ -58,7 +58,7 @@ public class JsonSerializationUtils {
 	 * @return The converted object of the specified target type.
 	 * @throws IOException 
 	 */
-	public static <T> T convertValue(Object source, Class<T> targetType)
+	public static <T> T convertValue(Object source,  TypeReference<T> targetType)
 			throws IOException {
 		return objectMapper.convertValue(source, targetType);
 	}

@@ -37,7 +37,8 @@ public class ClientHandler extends Thread {
 			while (true) {
 
 				String jsonRequest = (String) receiver.receive();
-				Request request = JsonSerializationUtils.deserializeFromJson(jsonRequest,Request.class);
+				Request request = JsonSerializationUtils.deserializeFromJson(jsonRequest,new TypeReference<Request>() {
+				});
 				handleRequest(request);
 
 			}
@@ -108,10 +109,12 @@ public class ClientHandler extends Thread {
 				Server.loggedClients.remove(this);
 			}
 			}
-			String jsonResponse = JsonSerializationUtils.serializeToJson(response,Response.class);
+			String jsonResponse = JsonSerializationUtils.serializeToJson(response,new TypeReference<Response>() {
+			});
 			sender.send(jsonResponse);
 		} catch (SQLException | ValidationException ex) {
-			String jsonResponse = JsonSerializationUtils.serializeToJson(new Response(ex.getMessage(), ResponseType.FAILURE), Response.class);
+			String jsonResponse = JsonSerializationUtils.serializeToJson(new Response(ex.getMessage(), ResponseType.FAILURE),new TypeReference<Response>() {
+			});
 			sender.send(jsonResponse);
 		}
 	}
