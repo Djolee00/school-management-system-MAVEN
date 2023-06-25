@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import schoolmanagement.commonlib.model.Course;
+import schoolmanagement.commonlib.model.CourseEnrollment;
 import schoolmanagement.commonlib.model.CourseGroup;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.persistence.dao.CourseDao;
@@ -18,13 +19,13 @@ public class MockCourseDao implements CourseDao {
 	@SuppressWarnings("serial")
 	public MockCourseDao() {
 		Course c1 = new Course("English", null, null, 5, null);
-		c1.setCourseGroups(new ArrayList<>() {{add(new CourseGroup());}});
+		c1.setCourseGroups(new ArrayList<>() {{add(new CourseGroup(c1,"Group1",5,null,null));}});
 		c1.setId(1l);
 		Course c2 = new Course("France", null, null, 5, null);
 		c2.setId(2l);
 		Course c3 = new Course("German", null, null, 5, null);
 		c3.setId(3l);
-
+		
 		courses = new ArrayList<>();
 		courses.add(c1);
 		courses.add(c2);
@@ -81,26 +82,55 @@ public class MockCourseDao implements CourseDao {
 
 	@Override
 	public Long saveCourse(Course course) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		if(failure == true) {
+			throw new SQLException("Could not save course");
+		}
+		course.setId(5l);
+		courses.add(course);
+		return course.getId();
 	}
 
 	@Override
 	public List<CourseGroup> getGroupsOfCourse(Course temp) throws SQLException {
-		// TODO Auto-generated method stub
+		for (Course course : courses) {
+			if(course.equals(temp))
+				return course.getCourseGroups();
+		}
 		return null;
 	}
 
 	@Override
 	public List<Student> getStudentsOfCourse(Course temp) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Student s1 = new Student("s1", "s1");
+		s1.setId(1l);
+		
+		Student s2 = new Student("s2", "s2");
+		s2.setId(2l);
+		Student s3 = new Student("s3", "s3");
+		s3.setId(3l);
+		
+		List<CourseEnrollment> courseEnrollments = new ArrayList<>();
+		courseEnrollments.add(new CourseEnrollment(s1,courses.get(0),null));
+		courseEnrollments.add(new CourseEnrollment(s2,courses.get(0),null));
+
+		courseEnrollments.add(new CourseEnrollment(s2,courses.get(1),null));
+		courseEnrollments.add(new CourseEnrollment(s3,courses.get(1),null));
+
+		
+		return courseEnrollments.stream().filter(ce->ce.getCourse().equals(temp)).map(
+				ce->ce.getStudent()).toList();
 	}
 
 	@Override
 	public Long saveCourseGroup(CourseGroup courseGroup) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		courseGroup.setId(2l);
+		for (Course course : courses) {
+			if(course.equals(courseGroup.getCourse())) {
+				course.getCourseGroups().add(courseGroup);
+				return 2l;
+			}
+		}
+		return 0l;
 	}
 
 	@Override
