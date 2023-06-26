@@ -119,11 +119,12 @@ public class ClientHandler extends Thread {
 		}
 	}
 
-	private void addActiveClient(Response response) {
+	private void addActiveClient(Response response) throws IOException {
 		if (response.getResponseType() == ResponseType.FAILURE) {
 			return;
 		}
-		user = (User) response.getObject();
+		user = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<User>(){
+		});
 		loginTime = new Date();
 		Server.loggedClients.add(this);
 	}

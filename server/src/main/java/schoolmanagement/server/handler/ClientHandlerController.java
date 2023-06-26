@@ -30,8 +30,7 @@ public class ClientHandlerController {
 
 	public Response loginUser(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Object object = request.getObject();
-		User temp = JsonSerializationUtils.convertValue(object, new TypeReference<User>() {
+		User temp = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<User>() {
 		});
 		User user = ((UserService) ServiceProvider.getInstance().getRequiredService(UserService.class))
 				.login(temp.getUsername(), temp.getPassword());
@@ -143,7 +142,8 @@ public class ClientHandlerController {
 
 	public Response updateStudentPersonalInfo(Request request) throws IOException, SQLException, ValidationException {
 		Response response = new Response();
-		Student student = (Student) request.getObject();
+		Student student = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Student>() {
+		});
 
 		boolean status = ((StudentService) ServiceProvider.getInstance().getRequiredService(StudentService.class))
 				.updateStudent(student, new UpdateStudentValidator());
@@ -158,7 +158,8 @@ public class ClientHandlerController {
 
 	public Response addStudent(Request request) throws ValidationException, IOException, SQLException {
 		Response response = new Response();
-		Student student = (Student) request.getObject();
+		Student student = JsonSerializationUtils.convertValue(request, new TypeReference<Student>() {
+		});
 
 		Student newStudent = ((StudentService) ServiceProvider.getInstance().getRequiredService(StudentService.class))
 				.saveStudent(student, new SaveStudentValidator());
@@ -174,7 +175,8 @@ public class ClientHandlerController {
 
 	public Response updateCourseData(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Course course = (Course) request.getObject();
+		Course course = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<Course>() {
+		});
 
 		boolean status = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.updateCourse(course);
@@ -189,7 +191,8 @@ public class ClientHandlerController {
 
 	public Response deleteCourse(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Course course = (Course) request.getObject();
+		Course course = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<Course>() {
+		});
 
 		boolean status = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.deleteCourse(course);
@@ -204,7 +207,8 @@ public class ClientHandlerController {
 
 	public Response addCourse(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Course course = (Course) request.getObject();
+		Course course = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Course>() {
+		});
 
 		Long generatedId = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.saveCourse(course);
@@ -220,7 +224,8 @@ public class ClientHandlerController {
 
 	public Response getGroupsOfCourse(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Course temp = (Course) request.getObject();
+		Course temp = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Course>() {
+		});
 
 		List<CourseGroup> courseGroups = ((CourseService) ServiceProvider.getInstance()
 				.getRequiredService(CourseService.class)).getGroupOfCourse(temp);
@@ -236,7 +241,8 @@ public class ClientHandlerController {
 
 	public Response getLanguageTutors(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Language tempLanguage = (Language) request.getObject();
+		Language tempLanguage = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<Language>() {
+		});
 
 		List<Tutor> tutors = ((LanguageService) ServiceProvider.getInstance().getRequiredService(LanguageService.class))
 				.getAllTutors(tempLanguage);
@@ -252,7 +258,8 @@ public class ClientHandlerController {
 
 	public Response getCourseStudents(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		Course temp = (Course) request.getObject();
+		Course temp = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Course>() {
+		});
 
 		List<Student> students = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.getCourseStudents(temp);
@@ -268,7 +275,8 @@ public class ClientHandlerController {
 
 	public Response addCourseGroup(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		CourseGroup courseGroup = (CourseGroup) request.getObject();
+		CourseGroup courseGroup = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<CourseGroup>() {
+		});
 
 		Long generatedId = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.saveCourseGroup(courseGroup);
@@ -284,7 +292,8 @@ public class ClientHandlerController {
 
 	public Response updateCourseGroup(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		CourseGroup courseGroup = (CourseGroup) request.getObject();
+		CourseGroup courseGroup = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<CourseGroup>() {
+		});
 
 		boolean status = ((CourseService) ServiceProvider.getInstance().getRequiredService(CourseService.class))
 				.updateCourseGroup(courseGroup);
