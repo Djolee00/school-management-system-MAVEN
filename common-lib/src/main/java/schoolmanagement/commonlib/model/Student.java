@@ -74,6 +74,13 @@ public class Student extends User implements Serializable {
 	public Student(String username, String password) {
 		super(username, password);
 	}
+	
+	/**
+	 * Default constructor
+	 */
+	public Student() {
+		super();
+	}
 
 	/**
 	 * Returns the first name of the student.
