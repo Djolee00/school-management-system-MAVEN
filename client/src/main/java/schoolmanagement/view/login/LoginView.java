@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class LoginView extends javax.swing.JFrame {
 
 	public LoginView() {
@@ -12,7 +13,6 @@ public class LoginView extends javax.swing.JFrame {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {

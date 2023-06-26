@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import schoolmanagement.commonlib.model.CourseGroup;
 
+@SuppressWarnings("serial")
 public class AdminGroupsSelectionTModel extends AbstractTableModel {
 
 	private final List<CourseGroup> groups;

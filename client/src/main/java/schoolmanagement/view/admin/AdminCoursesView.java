@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTable;
 
+@SuppressWarnings("serial")
 public class AdminCoursesView extends javax.swing.JFrame {
 
 	/**
@@ -22,7 +23,6 @@ public class AdminCoursesView extends javax.swing.JFrame {
 
 	}
 
-	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
@@ -338,10 +338,12 @@ public class AdminCoursesView extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	@SuppressWarnings("unused")
 	private void setColor(JPanel panel) {
 		panel.setBackground(new Color(197, 197, 197));
 	}
 
+	@SuppressWarnings("unused")
 	private void resetColor(JPanel panel) {
 		panel.setBackground(new Color(240, 240, 240));
 	}

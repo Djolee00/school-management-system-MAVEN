@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import schoolmanagement.commonlib.model.CourseEnrollment;
 
+@SuppressWarnings("serial")
 public class StudentProfileMyCoursesTModel extends AbstractTableModel {
 
 	private final List<CourseEnrollment> courseEnrollments;

@@ -80,7 +80,6 @@ public class ClientHandlerController {
 
 	public Response enrollStudentInCourses(Request request) throws IOException, SQLException {
 		Response response = new Response();
-		@SuppressWarnings("unchecked")
 		List<CourseEnrollment> selectedCourses = JsonSerializationUtils.convertValue(request.getObject(),new TypeReference<List<CourseEnrollment>>() {
 		});
 

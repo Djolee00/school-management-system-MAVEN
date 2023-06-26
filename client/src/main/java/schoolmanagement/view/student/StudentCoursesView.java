@@ -310,10 +310,12 @@ public class StudentCoursesView extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	@SuppressWarnings("unused")
 	private void setColor(JPanel panel) {
 		panel.setBackground(new Color(197, 197, 197));
 	}
 
+	@SuppressWarnings("unused")
 	private void resetColor(JPanel panel) {
 		panel.setBackground(new Color(240, 240, 240));
 	}

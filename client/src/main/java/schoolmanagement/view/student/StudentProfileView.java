@@ -9,6 +9,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class StudentProfileView extends javax.swing.JFrame {
 
 	public StudentProfileView() {
@@ -17,7 +18,6 @@ public class StudentProfileView extends javax.swing.JFrame {
 		designTable();
 	}
 
-	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {
@@ -401,10 +401,12 @@ public class StudentProfileView extends javax.swing.JFrame {
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
 
+	@SuppressWarnings("unused")
 	private void setColor(JPanel panel) {
 		panel.setBackground(new Color(197, 197, 197));
 	}
 
+	@SuppressWarnings("unused")
 	private void resetColor(JPanel panel) {
 		panel.setBackground(new Color(240, 240, 240));
 	}

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import schoolmanagement.commonlib.model.Course;
 
+@SuppressWarnings("serial")
 public class StudentCourseSelectionTModel extends AbstractTableModel {
 
 	private List<Course> courses;

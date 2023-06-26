@@ -10,6 +10,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+@SuppressWarnings("serial")
 public class JDateChooserCellEditor extends DefaultCellEditor {
 
 	private JDateChooser date;

@@ -3,6 +3,7 @@ package schoolmanagement.view.admin;
 import java.awt.Color;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class AdminHomeView extends javax.swing.JFrame {
 
 	public AdminHomeView() {
@@ -10,7 +11,6 @@ public class AdminHomeView extends javax.swing.JFrame {
 		setLocationRelativeTo(null);
 	}
 
-	@SuppressWarnings("unchecked")
 	// <editor-fold defaultstate="collapsed" desc="Generated
 	// Code">//GEN-BEGIN:initComponents
 	private void initComponents() {

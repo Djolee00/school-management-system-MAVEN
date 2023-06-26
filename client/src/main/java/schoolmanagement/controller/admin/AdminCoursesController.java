@@ -227,12 +227,14 @@ public class AdminCoursesController {
 		prepareCapacityColumn();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initLanguages() {
 		getAllLanguages();
 		coursesView.getJcbLanguage().setModel(new DefaultComboBoxModel(languages.toArray()));
 		coursesView.getJcbLanguage().setSelectedIndex(-1);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initLevels() {
 		coursesView.getJcbLevel().setModel(new DefaultComboBoxModel(Level.values()));
 		coursesView.getJcbLevel().setSelectedIndex(-1);
@@ -286,6 +288,7 @@ public class AdminCoursesController {
 		return temp;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void prepareLanguageColumn() {
 		JComboBox comboBox = new JComboBox();
 		TableColumn languageColumn = coursesView.getTblCourses().getColumn("Language");

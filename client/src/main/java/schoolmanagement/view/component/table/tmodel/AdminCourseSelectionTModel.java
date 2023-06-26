@@ -9,6 +9,7 @@ import javax.swing.table.AbstractTableModel;
 import schoolmanagement.commonlib.model.Course;
 import schoolmanagement.commonlib.model.Language;
 
+@SuppressWarnings("serial")
 public class AdminCourseSelectionTModel extends AbstractTableModel {
 
 	private List<Course> courses;

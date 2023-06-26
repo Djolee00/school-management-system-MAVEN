@@ -74,6 +74,7 @@ public class StudentCoursesController {
 		coursesView.getTblCourses().setModel(new StudentCourseSelectionTModel(courses));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initLanguages() {
 		List<Language> languages = new ArrayList<>();
 		for (Course course : courses) {
@@ -86,6 +87,7 @@ public class StudentCoursesController {
 		coursesView.getjComboBoxLanguage().setSelectedIndex(-1);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initLevels() {
 		coursesView.getjComboBoxLevel().setModel(new DefaultComboBoxModel(Level.values()));
 		coursesView.getjComboBoxLevel().setSelectedIndex(-1);

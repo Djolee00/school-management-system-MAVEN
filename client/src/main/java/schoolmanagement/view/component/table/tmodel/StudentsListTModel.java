@@ -4,6 +4,7 @@ import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import schoolmanagement.commonlib.model.Student;
 
+@SuppressWarnings("serial")
 public class StudentsListTModel extends AbstractTableModel {
 
 	private List<Student> students;

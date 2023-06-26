@@ -79,12 +79,14 @@ public class AdminStudentsListController {
 		tableModel = (StudentsListTModel) studentsView.getTblStudents().getModel();
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private void initCourses() {
 		List<Course> courses = getAllCourses();
 		studentsView.getJcbCourses().setModel(new DefaultComboBoxModel(courses.toArray()));
 		studentsView.getJcbCourses().setSelectedIndex(-1);
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initLanguages() {
 		List<Language> languages = getAllLanguages();
 		studentsView.getJcbLanguages().setModel(new DefaultComboBoxModel(languages.toArray()));
