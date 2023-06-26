@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -20,6 +23,7 @@ import schoolmanagement.commonlib.model.CourseEnrollment;
 import schoolmanagement.commonlib.model.Language;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.commonlib.model.enums.Level;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.session.Session;
 import schoolmanagement.view.component.table.tmodel.StudentCourseSelectionTModel;
@@ -189,7 +193,8 @@ public class StudentCoursesController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				tempCourses = (List<Course>) response.getObject();
+				tempCourses = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<Course>>() {
+				});
 			} else {
 				throw new IOException("Error getting students' data");
 			}

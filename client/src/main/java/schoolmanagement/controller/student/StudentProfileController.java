@@ -7,6 +7,9 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -15,6 +18,7 @@ import schoolmanagement.commonlib.model.CourseEnrollment;
 import schoolmanagement.commonlib.model.CourseGroup;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.commonlib.model.Tutor;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.session.Session;
 import schoolmanagement.view.component.table.tmodel.StudentProfileMyCoursesTModel;
@@ -84,7 +88,8 @@ public class StudentProfileController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				courseEnrollments = (List<CourseEnrollment>) response.getObject();
+				courseEnrollments = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<CourseEnrollment>>() {
+				});
 			}
 
 		} catch (ClassNotFoundException | IOException ex) {

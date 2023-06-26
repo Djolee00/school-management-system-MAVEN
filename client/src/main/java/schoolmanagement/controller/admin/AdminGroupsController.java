@@ -8,6 +8,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -16,6 +19,7 @@ import schoolmanagement.commonlib.model.Course;
 import schoolmanagement.commonlib.model.CourseGroup;
 import schoolmanagement.commonlib.model.Student;
 import schoolmanagement.commonlib.model.Tutor;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.session.Session;
 import schoolmanagement.view.admin.AdminGroupsView;
@@ -182,7 +186,8 @@ public class AdminGroupsController {
 			if (response.getResponseType() == ResponseType.FAILURE) {
 				throw new IOException("Error getting groups' data");
 			} else {
-				temp = (List<CourseGroup>) response.getObject();
+				temp = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<CourseGroup>>() {
+				});
 			}
 
 		} catch (ClassNotFoundException | IOException ex) {
@@ -206,7 +211,8 @@ public class AdminGroupsController {
 			if (response.getResponseType() == ResponseType.FAILURE) {
 				throw new IOException("Error getting languages' data");
 			} else {
-				tempTutors = (List<Tutor>) response.getObject();
+				tempTutors = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<Tutor>>() {
+				});
 			}
 
 		} catch (ClassNotFoundException | IOException ex) {
@@ -230,7 +236,8 @@ public class AdminGroupsController {
 			if (response.getResponseType() == ResponseType.FAILURE) {
 				throw new IOException("Error getting students data");
 			} else {
-				tempStudents = (List<Student>) response.getObject();
+				tempStudents = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<Student>>() {
+				});
 			}
 
 		} catch (ClassNotFoundException | IOException ex) {
@@ -306,7 +313,8 @@ public class AdminGroupsController {
 				throw new IOException("Course group couldn't be saved");
 			}
 
-			return (Long) response.getObject();
+			return JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<Long>() {
+			});
 		} catch (ClassNotFoundException | IOException ex) {
 			JOptionPane.showMessageDialog(groupsView, "Error adding group's data. Try again later!", "Error",
 					JOptionPane.ERROR_MESSAGE);

@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -19,6 +22,7 @@ import schoolmanagement.commonlib.model.Course;
 import schoolmanagement.commonlib.model.CourseEnrollment;
 import schoolmanagement.commonlib.model.Language;
 import schoolmanagement.commonlib.model.Student;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.validator.StudentValidatorBuilder;
 import schoolmanagement.view.admin.AdminStudentsListView;
@@ -170,7 +174,9 @@ public class AdminStudentsListController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				tempStudents = (List<Student>) response.getObject();
+				tempStudents = JsonSerializationUtils.convertValue(response.getObject(),
+						new TypeReference<List<Student>>() {
+						});
 			} else {
 				JOptionPane.showMessageDialog(studentsView, "Error getting students' data. Try again later!", "Error",
 						JOptionPane.ERROR_MESSAGE);
@@ -197,7 +203,9 @@ public class AdminStudentsListController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				tempCourses = (List<Course>) response.getObject();
+				tempCourses = JsonSerializationUtils.convertValue(response.getObject(),
+						new TypeReference<List<Course>>() {
+						});
 			} else {
 				JOptionPane.showMessageDialog(studentsView, "Error getting courses' data. Try again later!", "Error",
 						JOptionPane.ERROR_MESSAGE);
@@ -224,7 +232,9 @@ public class AdminStudentsListController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				tempLanguages = (List<Language>) response.getObject();
+				tempLanguages = JsonSerializationUtils.convertValue(response.getObject(),
+						new TypeReference<List<Language>>() {
+						});
 			} else {
 				throw new IOException("Error getting languages' data");
 			}
@@ -330,13 +340,16 @@ public class AdminStudentsListController {
 			}
 
 			if (selectedStudent.getId() == null && response.getResponseType() == ResponseType.FAILURE) {
-				JOptionPane.showMessageDialog(studentsView, (String) response.getObject(), "Error",
-						JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(studentsView,
+						JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<String>() {
+						}), "Error", JOptionPane.ERROR_MESSAGE);
 				return false;
 			}
 
 			if (selectedStudent.getId() == null && response.getResponseType() == ResponseType.SUCCESS) {
-				selectedStudent.setId(((Student) response.getObject()).getId());
+				selectedStudent
+						.setId((JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<Student>() {
+						})).getId());
 				return true;
 			}
 

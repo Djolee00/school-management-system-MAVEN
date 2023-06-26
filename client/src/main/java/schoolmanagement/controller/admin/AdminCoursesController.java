@@ -20,6 +20,9 @@ import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DocumentFilter;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import schoolmanagement.commonlib.communication.Operation;
 import schoolmanagement.commonlib.communication.Request;
 import schoolmanagement.commonlib.communication.Response;
@@ -27,6 +30,7 @@ import schoolmanagement.commonlib.communication.ResponseType;
 import schoolmanagement.commonlib.model.Course;
 import schoolmanagement.commonlib.model.Language;
 import schoolmanagement.commonlib.model.enums.Level;
+import schoolmanagement.commonlib.utils.JsonSerializationUtils;
 import schoolmanagement.communication.Communication;
 import schoolmanagement.session.Session;
 import schoolmanagement.view.admin.AdminCoursesView;
@@ -242,7 +246,8 @@ public class AdminCoursesController {
 			Response response = Communication.getInstance().receive();
 
 			if (response.getResponseType() == ResponseType.SUCCESS) {
-				languages = (List<Language>) response.getObject();
+				languages = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<Language>>() {
+				});
 			} else {
 				throw new IOException("Error getting languages' data");
 			}
@@ -267,7 +272,8 @@ public class AdminCoursesController {
 			if (response.getResponseType() == ResponseType.FAILURE) {
 				throw new IOException("Error getting courses' data");
 			} else {
-				temp = (List<Course>) response.getObject();
+				temp = JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<List<Course>>() {
+				});
 			}
 
 		} catch (ClassNotFoundException | IOException ex) {
@@ -383,7 +389,8 @@ public class AdminCoursesController {
 				throw new IOException("Course couldn't be saved");
 			}
 
-			return (Long) response.getObject();
+			return JsonSerializationUtils.convertValue(response.getObject(), new TypeReference<Long>() {
+			});
 		} catch (ClassNotFoundException | IOException ex) {
 			JOptionPane.showMessageDialog(coursesView, "Error adding course's data. Try again later!", "Error",
 					JOptionPane.ERROR_MESSAGE);
