@@ -41,10 +41,6 @@ class StudentTest {
 		assertThrows(NullPointerException.class, () -> student.setFirstName(null));
 	}
 
-	@Test
-	public void testSetFirstNameWithBlank() {
-		assertThrows(IllegalArgumentException.class, () -> student.setFirstName(""));
-	}
 
 	@Test
 	public void testGetLastName() {
@@ -62,10 +58,6 @@ class StudentTest {
 		assertThrows(NullPointerException.class, () -> student.setLastName(null));
 	}
 
-	@Test
-	public void testSetLastNameWithBlank() {
-		assertThrows(IllegalArgumentException.class, () -> student.setLastName(""));
-	}
 
 	@Test
 	public void testGetBirthdate() {

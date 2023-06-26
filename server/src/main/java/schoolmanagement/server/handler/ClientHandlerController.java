@@ -157,7 +157,7 @@ public class ClientHandlerController {
 
 	public Response addStudent(Request request) throws ValidationException, IOException, SQLException {
 		Response response = new Response();
-		Student student = JsonSerializationUtils.convertValue(request, new TypeReference<Student>() {
+		Student student = JsonSerializationUtils.convertValue(request.getObject(), new TypeReference<Student>() {
 		});
 
 		Student newStudent = ((StudentService) ServiceProvider.getInstance().getRequiredService(StudentService.class))

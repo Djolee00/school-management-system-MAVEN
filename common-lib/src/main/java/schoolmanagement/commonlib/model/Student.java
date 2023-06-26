@@ -102,9 +102,6 @@ public class Student extends User implements Serializable {
 		if (firstName == null) {
 			throw new NullPointerException("First name cannot be null");
 		}
-		if (firstName.isBlank()) {
-			throw new IllegalArgumentException("First name cannot be blank");
-		}
 		this.firstName = firstName;
 	}
 
@@ -127,9 +124,6 @@ public class Student extends User implements Serializable {
 	public void setLastName(String lastName) {
 		if (lastName == null) {
 			throw new NullPointerException("Last name cannot be null");
-		}
-		if (lastName.isBlank()) {
-			throw new IllegalArgumentException("Last name cannot be blank");
 		}
 		this.lastName = lastName;
 	}
